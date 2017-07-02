@@ -1,0 +1,12 @@
+BACKUPSPACE='' # root directory for backups
+BACKUPDIR_D='' # directory for daily backups
+BACKUPDIR_M='' # directory for monthly backups
+LOGSDIR='' # directory for backup logs
+DBLIST=('db1' 'db2' 'db3') # array of database names
+CHARSET='utf8' # charset for database backup, default is utf8
+HOST='localhost' # host for database connection
+USER='' # mysql user for connection
+PASSWD='' # mysql password for connection
+DOM='25' # day of mounth for copy daily backup to monthly backup folder, it must be less than DCOUNT 
+DCOUNT='30' # count of days to store daily backups
+MCOUNT='12' # count of months to store monthly backups
