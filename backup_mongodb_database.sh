@@ -28,6 +28,6 @@ do
   echo "[+++++++++-][`date +%F--%H-%M`] Free BACKUP space: `df -h ${BACKUPSPACE}|tail -n1|awk '{print $4}'`"
   echo "[++++++++++][`date +%F--%H-%M`] All operations completed successfully!"
   }
-  main 2>&1 | rotatelogs -n 2 ${LOGSDIR}/mysql_backup.log 1M
+  main 2>&1 | rotatelogs -n 2 ${LOGSDIR}/mongo_backup.log 1M
 done
 exit 0
