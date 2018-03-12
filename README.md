@@ -1,5 +1,5 @@
 # backup_scripts
-Scripts for backup databases(MySQL, PostgreSQL)
+Scripts for backup databases(MySQL, PostgreSQL, MongoDB)
 
 Required package ``apache2-utils`` install it by command:
 
