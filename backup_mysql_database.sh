@@ -11,7 +11,7 @@ do
   mkdir -p ${BACKUPDIR_D}/${DBNAME} 2> /dev/null 
   echo "[++--------][`date +%F--%H-%M`] Generate a database backup..."
   #MySQL dump
-  mysqldump --user=${USER} --host=${HOST} --password=${PASSWD} --default-character-set=${CHARSET} ${DBNAME} 2> /dev/null | gzip > ${BACKUPDIR_D}/${DBNAME}/`date +%F`_${DBNAME}.sql.gz
+  mysqldump --user=${USER} --host=${HOST} --password=${PASSWD} --ignore-table=storage.sessions --default-character-set=${CHARSET} ${DBNAME} 2> /dev/null | gzip > ${BACKUPDIR_D}/${DBNAME}/`date +%F`_${DBNAME}.sql.gz
   if [[ $? -gt 0 ]];then 
     echo "[++--------][`date +%F--%H-%M`] Aborted. Generate database backup failed."
     exit 1

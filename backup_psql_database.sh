@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 source $(dirname $0)/psql.conf
-DATEYMD=`date "+%Y-%m-%d"`
+DATEYMD=`date --iso`
 for DBNAME in ${DBLIST[@]}
 do
   function main
@@ -9,7 +9,8 @@ do
   echo "[----------][`date +%F--%H-%M`] Run the backup script..."
   mkdir -p ${BACKUPDIR_D}/${DBNAME} 2> /dev/null
   # postgresql dump
-  pg_dump -Fc -Z9 ${DBNAME} -f "${BACKUPDIR_D}/${DBNAME}/`date +%F`_${DBNAME}.dump"
+  pg_dump -h 127.0.0.1 -p 5432 -Fc -Z9 ${DBNAME} -f "/tmp/`date +%F`_${DBNAME}.dump"
+  mv -f /tmp/`date +%F`_${DBNAME}.dump ${BACKUPDIR_D}/${DBNAME}/${DATEYMD}_${DBNAME}.dump 2> /dev/null
   if [[ $? -gt 0 ]]
    then 
    echo "[++--------][`date +%F--%H-%M`] Aborted. Generate database backup failed."
